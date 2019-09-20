@@ -41,7 +41,7 @@ var makeBSS = function (el, options) {
                 }
 
                 // remove .show from whichever element currently has it 
-                // http://stackoverflow.com/a/16053538/2006057
+                // https://stackoverflow.com/a/16053538/2006057
                 [].forEach.call(this.$items, function (el) {
                     el.classList.remove('bss-show');
                 });

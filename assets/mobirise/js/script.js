@@ -13,7 +13,7 @@
 
     (function($,sr){
         // debouncing function from John Hann
-        // http://unscriptable.com/index.html/2009/03/20/debouncing-javascript-methods/
+        // https://unscriptable.com/index.html/2009/03/20/debouncing-javascript-methods/
         var debounce = function (func, threshold, execAsap) {
             var timeout;
 
@@ -419,7 +419,7 @@
         var e = document.createElement("section");
         e.id = "top-1";
         e.className = "engine";
-        e.innerHTML = '<a href="http://mobirise.com">mobirise.com</a> Mobirise v2.6.1';
+        e.innerHTML = '<a href="https://mobirise.com">mobirise.com</a> Mobirise v2.6.1';
         document.body.insertBefore(e, document.body.childNodes[0]);
     }
 }();
