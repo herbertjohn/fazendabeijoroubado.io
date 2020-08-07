@@ -53,8 +53,6 @@
                         <p>
               <a href="tel:+5565984614228" class="fa fa-phone p-2"></a>
               <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5565984614228" class="fa fa-whatsapp p-2"></a>
-              <a href="https://instagram.com/fazendabeijoroubado" class="fa fa-instagram p-2"></a>
-
             </p>
           </div>
         </div>
@@ -86,33 +84,34 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 pr-md-5">
-            <form action="https://formspree.io/herbertjohn@live.com" method="post">
-                  <div class="row">
-                    <div class="col-md-4 form-group">
-                      <label for="nome">Nome</label>
-                      <input type="text" name="nome" id="nome" class="form-control py-2">
-                    </div>
-                    <div class="col-md-4 form-group">
-                      <label for="telefone">Telefone</label>
-                      <input type="text" name="telefone" id="telefone" class="form-control py-2">
-                    </div>
-                    <div class="col-md-4 form-group">
-                      <label for="email">Email</label>
-                      <input type="email" name="email" id="email" class="form-control py-2">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 form-group">
-                      <label for="mensagem">Escreva uma mensagem</label>
-                      <textarea id="mensagem" name="mensagem" class="form-control py-2" cols="30" rows="8"></textarea>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input type="submit" value="Enviar Mensagem" class="btn btn-primary">
-                    </div>
-                  </div>
-                </form>
+
+                            <form id="my-form"
+  action="https://formspree.io/xlepojjp"
+  method="POST"
+ class="php-email-form">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" data-rule="minlen:4" data-msg="Digite pelo menos 4 caracteres" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Por favor digite um email válido" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Digite pelo menos 8 caracteres do assunto" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Por favor escreva algo para nós" placeholder="Messagem"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+               <p id="my-form-status"></p>
+              </div>
+              <div class="text-center"><button class="btn btn-primary" type="submit" id="my-form-button">Enviar Mensagem</button></div>
+            </form>
           </div>
           <div class="col-md-4">
             
@@ -192,8 +191,6 @@ Criado por:<a href="https://pontuadigital.com.br">  <strong><span>Pontúa Digita
             <p class="float-md-right">
               <a href="tel:+5565984614228" class="fa fa-phone p-2"></a>
               <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5565984614228" class="fa fa-whatsapp p-2"></a>
-              <a href="https://instagram.com/fazendabeijoroubado" class="fa fa-instagram p-2"></a>
-
             </p>
           </div>
         </div>
@@ -218,5 +215,56 @@ Criado por:<a href="https://pontuadigital.com.br">  <strong><span>Pontúa Digita
   <script type="text/javascript">
 var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
     </script>
+
+<!-- Place this script at the end of the body tag -->
+
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+
+    // get the form elements defined in your form HTML above
+    
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("my-form-button");
+    var status = document.getElementById("my-form-status");
+
+    // Success and Error functions for after the form is submitted
+    
+    function success() {
+      form.reset();
+      button.style = "display: none ";
+      status.innerHTML = "Sua mensagem foi enviada. Obrigado!";
+    }
+
+    function error() {
+      status.innerHTML = "Oops! Há um problema.";
+    }
+
+    // handle the form submission event
+
+    form.addEventListener("submit", function(ev) {
+      ev.preventDefault();
+      var data = new FormData(form);
+      ajax(form.method, form.action, data, success, error);
+    });
+  });
+  
+  // helper function for sending an AJAX request
+
+  function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        success(xhr.response, xhr.responseType);
+      } else {
+        error(xhr.status, xhr.response, xhr.responseType);
+      }
+    };
+    xhr.send(data);
+  }
+</script>
+
   </body>
 </html>
